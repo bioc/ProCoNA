@@ -1,8 +1,14 @@
 ProCoNA News
 
-CHANGES IN ProCoNA 0.99.2
+CHANGES IN ProCoNA 1.0.1
+=========================
 
-o removed a random component in the unit tests that could cause failure.
+o Fixed a bug in the correlationWithPhenotypesHeatMap function where the x-axis labels were not present.
+
+CHANGES IN ProCoNA 0.99.2
+=========================
+
+o Removed a random component in the unit tests that could cause failure.
 
 CHANGES IN ProCoNA 0.99.1 
 =========================

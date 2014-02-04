@@ -59,7 +59,7 @@ setMethod("correlationWithPhenotypesHeatMap",
               if(!is.null(plotName)) {pdf(plotName)};
               
               labeledHeatmap(Matrix = modCors[,mms],
-                             xLabels = names(phenotypes),
+                             xLabels = colnames(phenotypes),
                              yLabels = rownames(modCors),
                              ySymbols = rownames(modCors),
                              colorLabels = FALSE,
