@@ -58,29 +58,31 @@ setMethod("moduleMemberCorrelations",
               }
                                         # Define numbers of genes and samples
               nPeptides = ncol(pepdat);
-              nSamples = nrow(pepdat);
+              nSamples  = nrow(pepdat);
                                         # Recalculate MEs with color labels
               MEs0 = mergedMEs(pnet)
-              MEs = orderMEs(MEs0)
+              MEs  = orderMEs(MEs0)
               
-              modNames = substring(names(MEs), 3)
+              modNames = substring(colnames(MEs), 3)
               
               peptideModuleMembership = as.data.frame(cor(pepdat, MEs, use = "pairwise.complete.obs"));
               
-              MMPvalue = as.data.frame(corPvalueStudent(
-                  as.matrix(peptideModuleMembership), nSamples));
+              MMPvalue = as.data.frame(corPvalueStudent(as.matrix(peptideModuleMembership), nSamples));
               
               names(peptideModuleMembership) = paste("MM", modNames, sep="");
               names(MMPvalue) = paste("p.MM", modNames, sep="");
               
-              peptideTraitSignificance = as.data.frame(cor(pepdat, phenotypes, use = "pairwise.complete.obs"));
+              peptideTraitSignificance = as.data.frame(
+                cor(pepdat, phenotypes, use = "pairwise.complete.obs")
+                );
               
               PSPvalue = as.data.frame(corPvalueStudent(
-                  as.matrix(peptideTraitSignificance), nSamples));
+                  as.matrix(peptideTraitSignificance), nSamples)
+                );
               
-              names(peptideTraitSignificance) = paste("PS.", names(phenotypes), sep="");
+              names(peptideTraitSignificance) = paste("PS.", colnames(phenotypes), sep="");
               
-              names(PSPvalue) = paste("p.PS.", names(phenotypes), sep="");
+              names(PSPvalue) = paste("p.PS.", colnames(phenotypes), sep="");
               
               memberCors <- data.frame(Peptide=peptides(pnet),
                                        Module=mergedColors(pnet),
